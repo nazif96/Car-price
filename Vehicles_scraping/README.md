@@ -7,17 +7,17 @@ L'extraction des données via site web `AutoScout24.com` pour construire un data
 Vehicle_scraping/
 │
 ├── data/
-│   ├── vehicules.csv            ← Fichier généré automatiquement
-│   ├── vehicules.json           ← Idem
+│   ├── vehicules.csv            # Fichier généré automatiquement
+│   ├── vehicules.json           # Idem
 |
 ├── scraper/
 │   ├── __init__.py
-│   ├── scraper_methods.py       ← Fonctions utilitaires (HTML, JSON)
-│   ├── VehicleScraper.py        ← Classe principale
+│   ├── scraper_methods.py       # Fonctions utilitaires (HTML, JSON)
+│   ├── VehicleScraper.py        # Classe principale
 │
 │
-├── main.py                      ← Script principal à exécuter
-└── README.md                    ← (optionnel) instructions d’utilisation
+├── main.py                      # Script principal à exécuter
+└── README.md                    # (optionnel) instructions d’utilisation
 ```
 
 ### Mise en place du scraping 
@@ -73,7 +73,7 @@ En somme:
 |----------------------|---------------------------------------------------|---------------------------------|
 | `scraper_methods.py` | Fonctions utilitaires (requête HTML, JSON)        | ❌ (juste utilisé, pas exécuté) |
 | `VehicleScraper.py`  | Classe principale pour faire le scraping          | ❌ (importé uniquement)         |
-| `main_scraper.py`    | Script qui lance tout le processus de scraping    | ✅ À exécuter uniquement         |
+| `main_.py`    | Script qui lance tout le processus de scraping    | ✅ À exécuter uniquement         |
 
 
 pour lancer le scraping il nous faut juste lancer dans le terminale le code suivant 
