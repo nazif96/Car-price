@@ -26,11 +26,6 @@ def nettoie (df) :
 
  
 
-
-
-
-
-
 #fonction de nettoyage et de préparation des données
 
 def clean_preprocess (df) :
