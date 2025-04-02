@@ -10,7 +10,11 @@ import sympy as sp
 
 def nettoie (df) :
     
-    """Nettoyage""" 
+    """
+    Nettoyage pour analyse exploratoire des données 
+    suppression de colonnes inutiles, suppression des valeurs manquantes,
+    conversion de types de données, encodage des modalités des variables catégorielles
+    """ 
     
     df.columns = df.columns.str.lower()
     df = df.drop(['date', 'version','vendeur', 'nom de la voiture'], axis=1) 
@@ -30,7 +34,7 @@ def nettoie (df) :
 
 def clean_preprocess (df) :
     
-    """Nettoyage et préparation"""
+    """Nettoyage et preproceessing des données"""
     
     df.columns = df.columns.str.lower()
     df = df.drop(['date', 'version','vendeur', 'nom de la voiture'], axis=1) 
