@@ -6,23 +6,49 @@ import seaborn as sns
 import sympy as sp
 
 
+#fonction de nettoyage pour analyse exploratoire des données
 
-def nettoie_donnees (df):
-    # Nettoyage et préparation des données
-    df = df.drop('Date', axis=1)
-    df['Évaluations'] = df['Évaluations'].replace('Évaluations non disponibles', 0).astype(float)
-    df['Puissance_CH'] = df['Puissance'].str.extract('(\d+\.?\d*) CH').astype(float)
-    df['Prix'] = df['Prix'].str.replace('€', '').str.replace(' ', '').str.replace(',', '.').astype(float)
-    df['Kilométrage'] = df['Kilométrage'].str.replace('km', '').str.replace(' ', '').str.replace(',', '.').str.replace('- ', '0').astype(float)
-    df['Carburant'] = df['Carburant'].replace(['- Carburant','CNG'], 'Autre')
-    df['Transmission'] = df['Transmission'].replace(['- Boîte', 'Boite non disponible'], 'Autre')
-    new_df = df.drop(['Nom de la Voiture', 'Version','Vendeur' ], axis=1)
-    df['Puissance'] = df['Puissance'].replace(['- kW (- CH)'], 'Autre')
-    df_1 = pd.get_dummies(new_df, columns=['Modèle','Carburant','Transmission'])  
-    df_new1 = df_1.drop(['Carburant_Autres', 'Puissance'], axis=1)
-    df_encoded= df_new1.dropna(subset=['Puissance_CH']) 
-    df_encoded = df_encoded.drop('Carburant_Autre', axis=1)
-    df_encoded = df_encoded.drop('Transmission_Autre', axis=1)     
+def stats_nettoie (df) :
+    
+    """Nettoyage""" 
+    
+    df.columns = df.columns.str.lower()
+    df = df.drop(['date', 'version','vendeur', 'nom de la voiture'], axis=1) 
+    df['prix'] = df['prix'].str.replace('€', '').str.replace(' ', '').str.replace(',', '.').astype(float)
+    df['transmission'] = df['transmission'].replace(['- Boîte', 'Boite non disponible'], 'Autre')
+    df['kilométrage'] = df['kilométrage'].str.replace('km', '').str.replace(' ', '').str.replace(',', '.').str.replace('- ', '0').astype(float)
+    df['carburant'] = df['carburant'].replace(['- Carburant','CNG'], 'Autres')
+    df['puissance'] = df['puissance'].str.extract('(\d+\.?\d*) CH').astype(float)
+    df['évaluations'] = df['évaluations'].replace('Évaluations non disponibles', 0).astype(float)
+    df= df.dropna(subset=['puissance'])
+    
+    return df
+
+ 
 
 
+
+
+
+
+#fonction de nettoyage et de préparation des données
+
+def nettoie_donnees (df) :
+    
+    """Nettoyage et préparation"""
+    
+    df.columns = df.columns.str.lower()
+    df = df.drop(['date', 'version','vendeur', 'nom de la voiture'], axis=1) 
+    df['prix'] = df['prix'].str.replace('€', '').str.replace(' ', '').str.replace(',', '.').astype(float)
+    df['transmission'] = df['transmission'].replace(['- Boîte', 'Boite non disponible'], 'Autre')
+    df['kilométrage'] = df['kilométrage'].str.replace('km', '').str.replace(' ', '').str.replace(',', '.').str.replace('- ', '0').astype(float)
+    df['carburant'] = df['carburant'].replace(['- Carburant','CNG'], 'Autres')
+    df['puissance'] = df['puissance'].str.extract('(\d+\.?\d*) CH').astype(float)
+    df['évaluations'] = df['évaluations'].replace('Évaluations non disponibles', 0).astype(float)
+
+    dt = pd.get_dummies(df, columns=['modèle', 'carburant', 'transmission'])
+    df_encoded= dt.dropna(subset=['puissance'])
+    df_encoded = df_encoded.drop('carburant_Autres', axis=1) 
+    df_encoded = df_encoded.drop('transmission_Autre', axis=1)
+    
     return df_encoded
