@@ -8,7 +8,7 @@ import sympy as sp
 
 #fonction de nettoyage pour analyse exploratoire des données
 
-def stats_nettoie (df) :
+def nettoie (df) :
     
     """Nettoyage""" 
     
@@ -33,7 +33,7 @@ def stats_nettoie (df) :
 
 #fonction de nettoyage et de préparation des données
 
-def nettoie_donnees (df) :
+def clean_preprocess (df) :
     
     """Nettoyage et préparation"""
     
