@@ -39,6 +39,7 @@ Car-price/
 ├── meilleur_modele_knn.pkl           # Meilleur modèle entraîné (KNN)
 ├── resultats_modeles.csv             # Comparatif des performances des modèles
 ├── LICENSE                           # Licence du projet
+├── requirements.txt 
 └── README.md                         # Description du projet
 ```
 
