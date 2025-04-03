@@ -1,3 +1,6 @@
+import pandas as pd
+import numpy as np
+
 def predict_price(modele, voiture_dict, colonnes_reference):
     """
     Prédit le prix d'une voiture à partir d'un dictionnaire de caractéristiques.
