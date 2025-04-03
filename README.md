@@ -13,4 +13,17 @@ Notre comporte deux étapes:
 
 ## 🏗️ Structure du projet 
 
+```
+.Car price
+├── data/                      # Données brutes ou nettoyées
+├── machine_learning/
+│   ├── selection_train.py     # Fonctions d'entraînement / tuning
+│   ├── model_utils.py         # Fonctions de chargement, évaluation, etc.
+|   ├── README.md              # pour le machine learning
+├── notebooks/                 # Explorations ou tests manuels
+├── resultats_modeles.csv      # Résultats d’évaluation
+├── README.md                  # Présentation du projet
+
+```
+
 
