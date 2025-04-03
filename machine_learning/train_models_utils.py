@@ -46,6 +46,8 @@ def load_all_models(models_dir="Modeles") -> dict:
 
     return loaded_models
 
+# utilisation : loaded_models = load_all_models()
+
 def get_all_best_params(loaded_models: dict) -> dict:
     """
     Extrait les meilleurs hyperparamètres depuis les objets GridSearchCV chargés.
@@ -60,6 +62,10 @@ def get_all_best_params(loaded_models: dict) -> dict:
             print(f"⚠️ Le modèle '{name}' n'a pas d'attribut best_params_.")
 
     return best_params_dict
+
+# avoir les meilleurs paramètres
+# best_params = get_all_best_params(loaded_models)
+
 
 def extract_best_params_dict(gridsearch_models: dict) -> dict:
     """
@@ -78,6 +84,10 @@ def extract_best_params_dict(gridsearch_models: dict) -> dict:
         }
 
     return models_dict
+
+# 2. Construire un dictionnaire complet avec model + params
+# models_dict = extract_best_params_dict(loaded_models)
+
 
 def train_models_with_best_params(models: Dict[str, dict], X_train, y_train) -> dict:
     """
@@ -115,15 +125,6 @@ def best_params_to_dataframe(best_params: dict) -> pd.DataFrame:
     return pd.DataFrame(best_params).T
 
 
- Exemple d'utilisation :
-#best_params = {
-    #'Ridge': {'entrainement__alpha': 8, 'imputation__strategy': 'mean'},
-    #'KNeighborsRegressor': {'entrainement__n_neighbors': 2, 'imputation__strategy': 'mean'},
-    #'SVR': {'entrainement__C': 65536.0, 'entrainement__epsilon': 0.1, 'imputation__strategy': 'mean'},
-    #'RandomForestRegressor': {'entrainement__max_features': None, 'entrainement__n_estimators': 100, 'imputation__strategy': 'median'},
-    #'GradientBoostingRegressor': {'entrainement__learning_rate': 0.5, 'entrainement__n_estimators': 400, 'imputation__strategy': 'mean'},
-    #'MLPRegressor': {'entrainement__hidden_layer_sizes': (50, 50), 'entrainement__max_iter': 1000, 'imputation__strategy': 'most_frequent'}
-#}
 
 #from machine_learning.selection_train import train_models_with_best_params
 #trained_models = train_models_with_best_params(models_dict, X_train, y_train)
