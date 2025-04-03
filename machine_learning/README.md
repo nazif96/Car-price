@@ -25,43 +25,43 @@ Fournir aux utilisateurs finaux une estimation fiable basée sur des données r�
 ### 🧪 Méthodologie
 1. Prétraitement des données
 
-Nettoyage, imputation des valeurs manquantes
+    Nettoyage, imputation des valeurs manquantes et encodage des variables 
 
-Séparation des variables explicatives (X) et de la cible (y)
+    Séparation des variables explicatives (X) et de la cible (y)
 
 2. Division des données
 
-train_test_split (80% entraînement / 20% test)
+    train_test_split (80% entraînement / 20% test)
 
 3. Sélection de modèles
 
-Ridge Regression(Ridge), K-Nearest Neighbors Regressor(KNN), Support Vector Regressor(SVR), Random Forest(rf), Gradient Boosting Regressor(), Multi-Layer Perceptron (Mlp)
+    Ridge Regression(Ridge), K-Nearest Neighbors Regressor(KNN), Support Vector Regressor(SVR), Random Forest(rf), Gradient Boosting Regressor(), Multi-Layer Perceptron (Mlp)
 
 3. Optimisation des hyperparamètres
 
-Utilisation de GridSearchCV avec validation croisée
+    Utilisation de GridSearchCV avec validation croisée
 
-Recherche des meilleurs paramètres pour chaque modèle
+    Recherche des meilleurs paramètres pour chaque modèle
 
 4. Réentraînement final
 
-Chaque modèle est réentraîné avec ses meilleurs paramètres
+    Chaque modèle est réentraîné avec ses meilleurs paramètres
 
 5. Évaluation finale
 
-Calcul des métriques sur le test set :
+    Calcul des métriques sur le test set :
 
-RMSE (Root Mean Squared Error)
+    RMSE (Root Mean Squared Error)
 
-MAE (Mean Absolute Error)
+    MAE (Mean Absolute Error)
 
-R² (Score de détermination)
+    R² (Score de détermination)
 
 6. Comparaison des performances
 
-Visualisation des RMSE par modèle
+     Visualisation des RMSE par modèle
 
-Export des résultats au format .csv
+    Export des résultats au format .csv
 
 
 
