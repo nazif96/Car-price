@@ -23,20 +23,32 @@ def train_models_with_best_params(models: Dict[str, dict], X_train, y_train):
     trained_models = {}
 
     for model_name, params in models.items():
-        # Extraire les paramètres du modèle
-        model_params = params["best_params"].copy()
+        # Copier les meilleurs paramètres
+        raw_params = params["best_params"].copy()
 
-        # Enlever les paramètres spécifiques au pipeline
-        model_params.pop("imputation__strategy", None)
+        # Extraire la stratégie d'imputation
+        imputation_strategy = raw_params.pop("imputation__strategy", "mean")
 
+        # Nettoyer les clés : supprimer le préfixe 'entrainement__'
+        model_params = {
+            k.replace("entrainement__", ""): v
+            for k, v in raw_params.items()
+            if k.startswith("entrainement__")
+        }
+
+        # Créer une instance du modèle avec les bons paramètres
         model = params["model"](**model_params)
 
+        # Construire le pipeline
         pipeline = Pipeline([
-            ("imputation", SimpleImputer(strategy=params["best_params"]["imputation__strategy"])),
+            ("imputation", SimpleImputer(strategy=imputation_strategy)),
             ("entrainement", model),
         ])
 
+        # Entraîner le modèle
         pipeline.fit(X_train, y_train)
+
+        # Stocker
         trained_models[model_name] = pipeline
 
     return trained_models
